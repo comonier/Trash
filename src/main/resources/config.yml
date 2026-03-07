@@ -1,0 +1,6 @@
+# pt ou en
+language: pt
+# O tamanho do trash agora é fixo em 54 no código, 
+# mas mantemos aqui caso queira expandir algo no futuro.
+trash-gui-size: 54
+lava-gui-size: 27

@@ -1,0 +1,10 @@
+name: Trash
+version: 1.4
+main: com.comonier.trash.Trash
+api-version: '1.21'
+commands:
+  trash:
+    aliases: [lixo]
+    description: Abre o filtro ou gerencia avisos.
+  lava:
+    description: Deleta itens permanentemente.
