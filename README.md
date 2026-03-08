@@ -1,31 +1,30 @@
-# 🗑️ Trash & Lava Filter
+# 🗑️ Trash - Human Dispenser & Item Filter
+### Version 1.1
 
-**Trash** is an advanced inventory management plugin. It allows players to create custom filters to ignore unwanted items (such as mob drops) and provides a secure permanent disposal system.
+## 🚀 Main Functions
+*   **Human Dispenser Mechanic:** Blocked items are physically ejected away from the player with velocity and a dispenser sound effect.
+*   **Permanent Incineration (LAVA):** Secure menu for definitive item destruction with chat confirmation requirement.
+*   **Layout Lock:** Filter slots maintain their exact positions, even after server reloads or plugin restarts.
+*   **Smart Notifications:** Customizable alerts with a 5-second anti-spam cooldown.
+*   **Multi-language Support:** Native English (EN) and Portuguese (PT) translation files.
+*   **Automated Logs:** Records all incinerated items and automatically purges logs older than 7 days.
 
-## 🚀 Key Features
+## 🎮 Commands
 
-*   **Smart Filter (`/trash`):** A 54-slot virtual chest where added items are blocked from entering the inventory (ignores durability, names, and enchantments).
-*   **Anti-AutoLoot System:** High-performance background task that cleans filtered items even if they are forced into the inventory by other Auto-Loot plugins.
-*   **Lava Menu (`/lava`):** Permanent destruction system with chat confirmation (`YES`/`SIM`).
-*   **Rotational Logs:** Records valuable item deletions with UUID and Nickname. Old logs (5+ days) are automatically purged.
-*   **Dynamic Feedback:** In-game notifications when you add or remove items from your filter.
-*   **Multi-Language Support:** Full support for PT-BR and EN-US via `config.yml`.
-
-## 🛠️ Commands & Permissions
-
-
-| Command | Description | Permission |
+| Command | Description | Aliases |
 | :--- | :--- | :--- |
-| `/trash` | Opens the 54-slot filter chest | `None` |
-| `/trash notify` | Toggles block notifications on/off | `None` |
-| `/trash reload` | Reloads configurations and messages | `trash.admin` |
-| `/lava` | Opens the 27-slot destruction menu | `None` |
+| `/trash` | Opens the item filter GUI (54 slots). | `/lixo` |
+| `/trash reload` | Reloads all configurations and messages. | - |
+| `/lava` | Opens the permanent destruction menu. | - |
+| `/to` | Toggles your own block notifications. | - |
+| `/ta` | Toggles nearby players' block notifications. | - |
 
-## 📦 Installation
+## 🛠️ Permissions
+*   `trash.admin`: Grants access to the `/trash reload` command.
 
-1.  Compile the project using `mvn clean package`.
-2.  Drop the `Trash.jar` into your `plugins` folder.
-3.  Start the server or use `/plugman load Trash`.
+## 📝 Brief Summary
+Trash is a professional-grade item management plugin. It allows players to create custom filters for unwanted drops. Instead of simply deleting items, it uses a unique "Human Dispenser" mechanic to bounce items away, keeping the inventory clean while maintaining server immersion.
 
----
-*Developed by comonier.*
+## ⚠️ IMPORTANT WARNINGS
+*   **UPDATING FROM v1.0:** You **MUST DELETE** your old `messages_pt.yml`, `messages_en.yml`, and `config.yml` files before starting version 1.1.
+*   **REGENERATION:** The plugin will automatically generate the new updated files with the necessary keys for the "Human Dispenser" system and differentiated notifications.
