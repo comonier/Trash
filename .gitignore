@@ -1,10 +1,26 @@
 # Compilação do Maven
 target/
 
-# Configurações do VS Code
+# Configurações de IDE (VS Code, IntelliJ, Eclipse)
 .vscode/
+.idea/
+*.iml
+.project
+.classpath
+.settings/
 
-# Arquivos de log e testes locais do Plugin
+# Servidor e Bibliotecas pesadas (O principal problema)
+libs/
+*.jar
+server/
+work/
+world/
+world_nether/
+world_the_end/
+
+# Arquivos de log e configurações locais
 plugins/
+logs/
 *.log
 *.txt
+*.db
