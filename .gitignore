@@ -1,0 +1,10 @@
+# Compilação do Maven
+target/
+
+# Configurações do VS Code
+.vscode/
+
+# Arquivos de log e testes locais do Plugin
+plugins/
+*.log
+*.txt

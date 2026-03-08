@@ -1,0 +1,25 @@
+prefix: "§0[§a!§0]§0[§aTrash§0]:"
+gui-trash-title: "§2Trash Filter"
+gui-lava-title: "§cLAVA - DESTRUCTION"
+filter-added: "&cYou will no longer collect &e%item&c!"
+filter-removed: "&aYou are now collecting &e%item&a again!"
+filter-duplicate: "&cThis item is already in your filter!"
+
+# Specific Notify Toggle Messages
+notify-own-on: "&aYour block notifications: ENABLED"
+notify-own-off: "&cYour block notifications: DISABLED"
+notify-all-on: "&aOthers' block notifications: ENABLED"
+notify-all-off: "&cOthers' block notifications: DISABLED"
+
+usage: "&cUse: /trash [reload]"
+error-occurred: "&cAn internal error occurred while processing this action."
+open-trash: "&eOpening trash filter. Items here block auto-pickup."
+
+# BLOCK MESSAGES (Human Dispenser)
+# %item = Item Name (Orange) | %player = Player Name (Green/Blue)
+blocked-msg-self: "§c❌ §7[Trash] §6%item §cBLOCKED §7(§a%player§7)"
+blocked-msg-others: "§c❌ §7[Trash] §6%item §cBLOCKED §7(§b%player§7)"
+
+lava-confirm: "&c&lWARNING! &eEverything you put in the LAVA menu will be &4DELETED FOREVER&e. Type &aYES &eor &aSIM &eto confirm and open."
+lava-opened: "&4[LAVA] &cDestruction menu opened. Items placed here will vanish upon closing!"
+lava-destroyed: "&4[LAVA] &7Items successfully incinerated on: &e%date"

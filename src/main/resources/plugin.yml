@@ -1,0 +1,21 @@
+name: Trash
+version: 1.1
+main: com.comonier.trash.Trash
+api-version: '1.21'
+commands:
+  trash:
+    aliases: [lixo]
+    description: Abre o filtro de itens bloqueados.
+    usage: /trash [reload]
+  lava:
+    description: Abre o menu de destruição permanente de itens.
+  to:
+    description: Ativa ou desativa seus próprios avisos de bloqueio de itens.
+    usage: /to
+  ta:
+    description: Ativa ou desativa avisos de bloqueio de itens de outros jogadores próximos.
+    usage: /ta
+permissions:
+  trash.admin:
+    description: Permite recarregar as configurações do plugin.
+    default: op

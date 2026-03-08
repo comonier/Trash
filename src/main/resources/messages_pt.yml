@@ -1,0 +1,24 @@
+prefix: "§0[§a!§0][§6Lixo§0]:"
+gui-trash-title: "§2Filtro de Lixo"
+gui-lava-title: "§cLAVA - DESTRUIÇÃO"
+filter-added: "&cVocê não coletará mais &e%item&c!"
+filter-removed: "&aVocê voltou a coletar &e%item&a!"
+filter-duplicate: "&cEste item já está no seu filtro!"
+
+# Mensagens de Ativar/Desativar específicas
+notify-own-on: "&aSeus avisos de bloqueio: ATIVADOS"
+notify-own-off: "&cSeus avisos de bloqueio: DESATIVADOS"
+notify-all-on: "&aAvisos de bloqueio de terceiros: ATIVADOS"
+notify-all-off: "&cAvisos de bloqueio de terceiros: DESATIVADOS"
+
+usage: "&cUse: /lixo [reload]"
+error-occurred: "&cOcorreu um erro interno ao processar esta ação."
+open-trash: "&eAbrindo filtro de lixo. Itens aqui bloqueiam a coleta automática."
+
+# NOVAS CHAVES PARA O PICKUP FUNCIONAR
+blocked-msg-self: "§c❌ §7[Lixo] §6%item §cBLOQUEADO §7(§a%player§7)"
+blocked-msg-others: "§c❌ §7[Lixo] §6%item §cBLOQUEADO §7(§b%player§7)"
+
+lava-confirm: "&c&lATENÇÃO! &eTudo o que você jogar no menu LAVA será &4DELETADO PARA SEMPRE&e. Digite &aYES &eou &aSIM &epara confirmar e abrir."
+lava-opened: "&4[LAVA] &cMenu de destruição aberto. Itens colocados aqui sumirão ao fechar!"
+lava-destroyed: "&4[LAVA] &7Itens incinerados com sucesso em: &e%date"
