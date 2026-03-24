@@ -1,10 +1,21 @@
 name: Trash
-version: 1.4
+version: '${project.version}'
 main: com.comonier.trash.Trash
 api-version: '1.21'
+author: Comonier
+description: Advanced item destruction system (Lava/Trash).
+
 commands:
-  trash:
-    aliases: [lixo]
-    description: Abre o filtro ou gerencia avisos.
   lava:
-    description: Deleta itens permanentemente.
+    aliases: [trash, lixo]
+    description: Opens the destruction menu to permanently delete items.
+    usage: /lava
+    permission: trash.use
+
+permissions:
+  trash.use:
+    description: Allows the player to incinerate items.
+    default: true
+  trash.admin:
+    description: Allows reloading the plugin configuration.
+    default: op

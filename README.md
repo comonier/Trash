@@ -1,31 +1,53 @@
-# 🗑️ Trash & Lava Filter
+# 🗑️ Trash (v1.2) - Ultimate Item Disposal
 
-**Trash** is an advanced inventory management plugin. It allows players to create custom filters to ignore unwanted items (such as mob drops) and provides a secure permanent disposal system.
-
-## 🚀 Key Features
-
-*   **Smart Filter (`/trash`):** A 54-slot virtual chest where added items are blocked from entering the inventory (ignores durability, names, and enchantments).
-*   **Anti-AutoLoot System:** High-performance background task that cleans filtered items even if they are forced into the inventory by other Auto-Loot plugins.
-*   **Lava Menu (`/lava`):** Permanent destruction system with chat confirmation (`YES`/`SIM`).
-*   **Rotational Logs:** Records valuable item deletions with UUID and Nickname. Old logs (5+ days) are automatically purged.
-*   **Dynamic Feedback:** In-game notifications when you add or remove items from your filter.
-*   **Multi-Language Support:** Full support for PT-BR and EN-US via `config.yml`.
-
-## 🛠️ Commands & Permissions
-
-
-| Command | Description | Permission |
-| :--- | :--- | :--- |
-| `/trash` | Opens the 54-slot filter chest | `None` |
-| `/trash notify` | Toggles block notifications on/off | `None` |
-| `/trash reload` | Reloads configurations and messages | `trash.admin` |
-| `/lava` | Opens the 27-slot destruction menu | `None` |
-
-## 📦 Installation
-
-1.  Compile the project using `mvn clean package`.
-2.  Drop the `Trash.jar` into your `plugins` folder.
-3.  Start the server or use `/plugman load Trash`.
+A lightweight, high-performance solution for item destruction. Designed for modern Minecraft servers (1.21.1+), **Trash** provides a safe and intuitive way for players to incinerate unwanted items permanently.
 
 ---
-*Developed by comonier.*
+
+### 🌟 Main Features
+
+*   **🔥 Triple-Alias Disposal:** Access the destruction menu using `/lava`, `/trash`, or `/lixo`. All paths lead to the same high-efficiency incinerator.
+*   **🛡️ High-Safety Protocol:** Optional chat confirmation (`YES`/`SIM`) prevents accidental opening and loss of items.
+*   **⚡ Optimized Core:** Built for **Java 21** and **Spigot/Paper 1.21.1**. Zero background tasks and zero main-thread overhead.
+*   **🌍 Multi-Language Core:** Native, out-of-the-box support for **English (EN)** and **Portuguese (PT)**, easily toggled in the config.
+*   **📦 Flexible GUI:** Configurable inventory size (up to 54 slots) to fit your server's needs.
+*   **🎨 Premium Look:** Full support for Legacy color codes in all messages and GUI titles.
+
+---
+
+### 💻 Commands
+
+
+| Command | Aliases | Description | Permission |
+| :--- | :--- | :--- | :--- |
+| `/lava` | `/trash`, `/lixo` | Opens the item destruction menu. | `trash.use` |
+| `/lava reload` | - | Hot-reloads configurations and messages. | `trash.admin` |
+
+---
+
+### 🔑 Permissions
+
+*   **`trash.use`**: Allows players to use the destruction system (Default: true).
+*   **`trash.admin`**: Master permission to reload settings and manage the plugin (Default: op).
+
+---
+
+### ⚙️ Configuration (`config.yml`)
+
+```yaml
+# Language selection (en or pt)
+language: en
+
+# Size of the destruction inventory (multiples of 9, max 54)
+lava-gui-size: 27
+
+# If true, requires chat confirmation before opening the menu
+lava-confirmation: false
+```
+
+⚠️ Important Notice
+Compatibility: Fully optimized for Minecraft 1.21.1 and Java 21.
+Clean Slate: Version 1.2 removes old filter/database dependencies for a "plug-and-play" experience focusing strictly on item disposal.
+Update Alert: If upgrading from 1.1, please delete your old config.yml and messages files to allow the new simplified structure to generate.
+
+Developed with ❤️ by Comonier

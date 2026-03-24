@@ -1,94 +1,69 @@
 package com.comonier.trash;
 
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
-import org.bukkit.event.HandlerList;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
-public class Trash extends JavaPlugin implements CommandExecutor, TabCompleter {
-
-    private TrashManager manager;
+public class Trash extends JavaPlugin implements CommandExecutor, Listener {
 
     @Override
     public void onEnable() {
-        try {
-            saveDefaultConfig();
-            this.manager = new TrashManager(this);
-            this.manager.loadMessages();
-            this.manager.purgeOldLogs();
-
-            getCommand("trash").setExecutor(this);
-            getCommand("trash").setTabCompleter(this);
-            getCommand("lava").setExecutor(this);
-            
-            getServer().getPluginManager().registerEvents(new TrashListener(this, manager), this);
-        } catch (Exception e) {
-            getLogger().severe("Erro critico ao iniciar o plugin: " + e.getMessage());
-        }
-    }
-
-    @Override
-    public void onDisable() {
-        HandlerList.unregisterAll(this);
-        this.manager = null;
+        saveDefaultConfig();
+        getCommand("lava").setExecutor(this);
+        getServer().getPluginManager().registerEvents(this, this);
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        try {
-            if (cmd.getName().equalsIgnoreCase("trash")) {
-                if (!(sender instanceof Player)) return true;
-                Player p = (Player) sender;
+        if (!(sender instanceof Player player)) return true;
 
-                if (args.length > 0) {
-                    String sub = args[0].toLowerCase();
-                    if (sub.equals("reload")) {
-                        if (p.hasPermission("trash.admin") || p.isOp()) {
-                            reloadConfig();
-                            manager.loadMessages();
-                            p.sendMessage("§a[Trash] Recarregado com sucesso!");
-                        }
-                        return true;
-                    }
-                    if (sub.equals("notify") || sub.equals("aviso")) {
-                        boolean state = manager.toggleNotify(p);
-                        p.sendMessage(manager.getMsg(state ? "notify-on" : "notify-off", ""));
-                        return true;
-                    }
-                    p.sendMessage(manager.getMsg("usage", ""));
-                    return true;
-                }
-                manager.openTrash(p);
-                return true;
-            }
-
-            if (cmd.getName().equalsIgnoreCase("lava")) {
-                if (!(sender instanceof Player)) return true;
-                manager.addPendingLava(((Player) sender).getUniqueId());
-                sender.sendMessage(manager.getMsg("lava-confirm", ""));
-                return true;
-            }
-        } catch (Exception e) {
-            sender.sendMessage(manager.getMsg("error-occurred", ""));
-        }
+        int size = 27; // Tamanho fixo ou via config
+        String title = color(getConfig().getString("gui-lava-title"));
+        
+        Inventory lavaGui = Bukkit.createInventory(null, size, title);
+        player.openInventory(lavaGui);
+        player.sendMessage(getMsg("lava-opened"));
+        
         return true;
     }
 
-    @Override
-    public List<String> onTabComplete(CommandSender sender, Command cmd, String alias, String[] args) {
-        if (cmd.getName().equalsIgnoreCase("trash") && args.length == 1) {
-            List<String> subs = new ArrayList<>(Arrays.asList("aviso", "notify"));
-            if (sender.hasPermission("trash.admin") || sender.isOp()) subs.add("reload");
-            return subs.stream().filter(s -> s.startsWith(args[0].toLowerCase())).collect(Collectors.toList());
+    @EventHandler
+    public void onClose(InventoryCloseEvent event) {
+        String title = color(getConfig().getString("gui-lava-title"));
+        
+        if (event.getView().getTitle().equals(title)) {
+            boolean hasItems = false;
+            for (ItemStack item : event.getInventory().getContents()) {
+                if (item != null && item.getType() != Material.AIR) {
+                    hasItems = true;
+                    break;
+                }
+            }
+            
+            if (hasItems) {
+                event.getInventory().clear();
+                event.getPlayer().sendMessage(getMsg("lava-destroyed"));
+            }
         }
-        return new ArrayList<>();
+    }
+
+    private String getMsg(String path) {
+        String prefix = getConfig().getString("prefix");
+        String msg = getConfig().getString(path);
+        return color(prefix + " " + msg);
+    }
+
+    private String color(String s) {
+        return ChatColor.translateAlternateColorCodes('&', s);
     }
 }

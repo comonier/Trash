@@ -1,6 +1,9 @@
-# pt ou en
-language: pt
-# O tamanho do trash agora é fixo em 54 no código, 
-# mas mantemos aqui caso queira expandir algo no futuro.
-trash-gui-size: 54
+# Language selection (en or pt)
+language: en
+
+# Size of the destruction inventory (multiples of 9, max 54)
 lava-gui-size: 27
+
+# If true, the player must type "YES" in chat after the command to open.
+# If false, the menu opens directly.
+lava-confirmation: false
